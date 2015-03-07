@@ -95,6 +95,14 @@ endif
 syn match markdownEscape "\\[][\\`*_{}()#+.!-]"
 syn match markdownError "\w\@<=_\w\@="
 
+syn include @markdownTex syntax/tex.vim
+syn region markdownMathJax start="\V$" end="\V$" keepend contains=@markdownTex
+syn region markdownMathJax start="\V$$" end="\V$$" keepend contains=@markdownTex
+" these two line must come after escaping ('\\') syntax, since last match overrule
+" earlier one.
+syn region markdownMathJax start="\\\\\[" end="\\\\\]" keepend contains=@markdownTex
+syn region markdownMathJax start="\\\\(" end="\\\\)" keepend contains=@markdownTex
+
 hi def link markdownH1                    htmlH1
 hi def link markdownH2                    htmlH2
 hi def link markdownH3                    htmlH3
@@ -125,6 +133,8 @@ hi def link markdownCodeDelimiter         Delimiter
 
 hi def link markdownEscape                Special
 hi def link markdownError                 Error
+
+hi def link markdownMathJax               Statement
 
 let b:current_syntax = "markdown"
 if main_syntax ==# 'markdown'
