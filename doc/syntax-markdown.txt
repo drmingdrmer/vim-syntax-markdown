@@ -1,0 +1,16 @@
+
+*Options*
+
+|g:markdown_github_flavored|
+	Value:		0 or 1
+	Default:	1
+
+	Enable github flavored markdown syntax. See:
+	https://help.github.com/articles/github-flavored-markdown/
+
+	This option enables:
+	-   Underline as a key word, instead of italic or error.
+
+" vim:tw=78:ts=8:sw=8:sts=8:noet:ft=help:norl:
+
+

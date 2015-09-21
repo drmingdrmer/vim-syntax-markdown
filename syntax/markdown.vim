@@ -1,8 +1,9 @@
 " Vim syntax file
 " Language:     Markdown
-" Maintainer:   Tim Pope <vimNOSPAM@tpope.org>
+" Maintainer:   drdr.xp@gmail.com
+"               Borrowed from the one by Tim Pope <vimNOSPAM@tpope.org>
 " Filenames:    *.markdown
-" Last Change:  2013 May 30
+" Last Change:  2015 Sep 21
 
 if exists("b:current_syntax")
   finish
@@ -10,6 +11,10 @@ endif
 
 if !exists('main_syntax')
   let main_syntax = 'markdown'
+endif
+
+if !exists('g:markdown_github_flavored')
+  let g:markdown_github_flavored = 1
 endif
 
 runtime! syntax/html.vim
@@ -76,7 +81,10 @@ syn region markdownId matchgroup=markdownIdDelimiter start="\[" end="\]" keepend
 syn region markdownAutomaticLink matchgroup=markdownUrlDelimiter start="<\%(\w\+:\|[[:alnum:]_+-]\+@\)\@=" end=">" keepend oneline
 
 syn region markdownItalic start="\S\@<=\*\|\*\S\@=" end="\S\@<=\*\|\*\S\@=" keepend contains=markdownLineStart
-syn region markdownItalic start="\S\@<=_\|_\S\@=" end="\S\@<=_\|_\S\@=" keepend contains=markdownLineStart
+if g:markdown_github_flavored
+else
+  syn region markdownItalic start="\S\@<=_\|_\S\@=" end="\S\@<=_\|_\S\@=" keepend contains=markdownLineStart
+endif
 syn region markdownBold start="\S\@<=\*\*\|\*\*\S\@=" end="\S\@<=\*\*\|\*\*\S\@=" keepend contains=markdownLineStart,markdownItalic
 syn region markdownBold start="\S\@<=__\|__\S\@=" end="\S\@<=__\|__\S\@=" keepend contains=markdownLineStart,markdownItalic
 syn region markdownBoldItalic start="\S\@<=\*\*\*\|\*\*\*\S\@=" end="\S\@<=\*\*\*\|\*\*\*\S\@=" keepend contains=markdownLineStart
@@ -93,7 +101,10 @@ if main_syntax ==# 'markdown'
 endif
 
 syn match markdownEscape "\\[][\\`*_{}()#+.!-]"
-syn match markdownError "\w\@<=_\w\@="
+if g:markdown_github_flavored
+else
+  syn match markdownError "\w\@<=_\w\@="
+endif
 
 syn include @markdownTex syntax/tex.vim
 syn region markdownMathJax start="\V$" end="\V$" keepend contains=@markdownTex
