@@ -1,5 +1,3 @@
-let g:markdown_github_flavored = 1
-
 let g:_rtp_here = expand("<sfile>:h:h")
 let &runtimepath = g:_rtp_here . "," . &runtimepath
 
