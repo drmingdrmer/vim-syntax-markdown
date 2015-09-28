@@ -45,23 +45,23 @@ http://abc.com
 
 ## strike through
 
-~~aa~~
-xx~~aa~~yy
+~~strikeThrough~~
+xx~~strikeThrough~~yy
 
-- in list ~~aa~~yy
-    - in list ~~aa~~yy
+- in list ~~strikeThrough~~yy
+    - in list ~~strikeThrough~~yy
 
-> in block ~~aa~~yy
+> in block ~~strikeThrough~~yy
 
 ~~multi
    line~~
 
-**in bold ~~aa~~ yyy**
+**in bold ~~strikeThrough~~ yyy**
 
 | Cool  |
 | -----:|
-| 1 ~~abc~~ |
+| 1 ~~strikeThrough~~ |
 
 ```
-xx~~aa~~yy
+xx~~notStrikeThrough~~yy
 ```
