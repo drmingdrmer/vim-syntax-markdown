@@ -42,3 +42,26 @@ xxx http://abc.com yyy
 ```
 http://abc.com
 ```
+
+## strike through
+
+~~aa~~
+xx~~aa~~yy
+
+- in list ~~aa~~yy
+    - in list ~~aa~~yy
+
+> in block ~~aa~~yy
+
+~~multi
+   line~~
+
+**in bold ~~aa~~ yyy**
+
+| Cool  |
+| -----:|
+| 1 ~~abc~~ |
+
+```
+xx~~aa~~yy
+```

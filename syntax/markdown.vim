@@ -41,7 +41,7 @@ syn match markdownValid '&\%(#\=\w*;\)\@!'
 syn match markdownLineStart "^[<@]\@!" nextgroup=@markdownBlock,htmlSpecialChar
 
 syn cluster markdownBlock contains=markdownH1,markdownH2,markdownH3,markdownH4,markdownH5,markdownH6,markdownBlockquote,markdownListMarker,markdownOrderedListMarker,markdownCodeBlock,markdownRule,markdownGithubAutoLink
-syn cluster markdownInline contains=markdownLineBreak,markdownLinkText,markdownItalic,markdownBold,markdownCode,markdownEscape,@htmlTop,markdownError,markdownGithubAutoLink
+syn cluster markdownInline contains=markdownLineBreak,markdownLinkText,markdownItalic,markdownBold,markdownCode,markdownEscape,@htmlTop,markdownError,markdownGithubAutoLink,markdownGithubStrikeThrough
 
 syn match markdownH1 "^.\+\n=\+$" contained contains=@markdownInline,markdownHeadingRule,markdownAutomaticLink
 syn match markdownH2 "^.\+\n-\+$" contained contains=@markdownInline,markdownHeadingRule,markdownAutomaticLink
@@ -83,11 +83,12 @@ syn region markdownAutomaticLink matchgroup=markdownUrlDelimiter start="<\%(\w\+
 syn region markdownItalic start="\S\@<=\*\|\*\S\@=" end="\S\@<=\*\|\*\S\@=" keepend contains=markdownLineStart
 if g:markdown_github_flavored
   syn match markdownGithubAutoLink '\Vhttps\?://\[^ 	]\+'
+  syn region markdownGithubStrikeThrough start="\V\S\@<=~~\|~~\S\@=" end="\V\S\@<=~~\|~~\S\@=" keepend contains=markdownLineStart,markdownItalic
 else
   syn region markdownItalic start="\S\@<=_\|_\S\@=" end="\S\@<=_\|_\S\@=" keepend contains=markdownLineStart
 endif
-syn region markdownBold start="\S\@<=\*\*\|\*\*\S\@=" end="\S\@<=\*\*\|\*\*\S\@=" keepend contains=markdownLineStart,markdownItalic
-syn region markdownBold start="\S\@<=__\|__\S\@=" end="\S\@<=__\|__\S\@=" keepend contains=markdownLineStart,markdownItalic
+syn region markdownBold start="\S\@<=\*\*\|\*\*\S\@=" end="\S\@<=\*\*\|\*\*\S\@=" keepend contains=markdownLineStart,markdownItalic,markdownGithubStrikeThrough
+syn region markdownBold start="\S\@<=__\|__\S\@=" end="\S\@<=__\|__\S\@=" keepend contains=markdownLineStart,markdownItalic,markdownGithubStrikeThrough
 syn region markdownBoldItalic start="\S\@<=\*\*\*\|\*\*\*\S\@=" end="\S\@<=\*\*\*\|\*\*\*\S\@=" keepend contains=markdownLineStart
 syn region markdownBoldItalic start="\S\@<=___\|___\S\@=" end="\S\@<=___\|___\S\@=" keepend contains=markdownLineStart
 syn region markdownCode matchgroup=markdownCodeDelimiter start="`" end="`" keepend contains=markdownLineStart
@@ -133,6 +134,7 @@ hi def link markdownIdDeclaration         Typedef
 hi def link markdownId                    Type
 hi def link markdownAutomaticLink         markdownUrl
 hi def link markdownGithubAutoLink        markdownUrl
+hi def link markdownGithubStrikeThrough   NonText
 hi def link markdownUrl                   Float
 hi def link markdownUrlTitle              String
 hi def link markdownIdDelimiter           markdownLinkDelimiter
