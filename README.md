@@ -5,6 +5,22 @@ VIM syntax for markdown with nested MathJax(in LaTeX) support.
 ## Before and After using this plugin:
 ![](res/before-after.png)
 
+<!-- <style> -->
+<!--     img { -->
+<!--         max-width: 100%; -->
+<!--     } -->
+<!-- </style> -->
+
+## Github Flavored Markdown Support
+
+Reference: https://help.github.com/articles/github-flavored-markdown/
+
+Support:
+-   `_` as key_word instead of as an_error.
+-   Highlight url: http://abc.com .
+-   `~~` creates ~~strikethrough~~.
+
+![](res/github-flavored.png)
 
 ## Embed Math formula in markdown:
 ```
