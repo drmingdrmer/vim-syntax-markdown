@@ -47,3 +47,7 @@ Or manually:
 
 Download [vim-syntax-markdown.zip](https://github.com/drmingdrmer/vim-syntax-markdown/archive/master.zip)
 and unzip it into `~/.vim`.
+
+## Credit
+
+@[c42f](//github.com/c42f)
