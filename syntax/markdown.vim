@@ -111,6 +111,9 @@ endif
 syn include @markdownTex syntax/tex.vim
 syn region markdownMathJax start="\V$" end="\V$" keepend contains=@markdownTex
 syn region markdownMathJax start="\V$$" end="\V$$" keepend contains=@markdownTex
+syn region markdownMathJax start="\\begin{align}" end="\\end{align}" keepend contains=@markdownTex
+syn region markdownMathJax start="\\begin{multline}" end="\\end{multline}" keepend contains=@markdownTex
+syn region markdownMathJax start="\\begin{gather}" end="\\end{gather}" keepend contains=@markdownTex
 " these two line must come after escaping ('\\') syntax, since last match overrule
 " earlier one.
 syn region markdownMathJax start="\\\\\[" end="\\\\\]" keepend contains=@markdownTex
